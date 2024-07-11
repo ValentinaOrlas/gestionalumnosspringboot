@@ -55,4 +55,20 @@ public class StudentController {
         students.add(student);
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
+
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public Student updateStudent(@RequestBody Student student){
+
+        for(Student i : students){
+            if(i.getId() == student.getId()){
+                i.setName(student.getName());
+                i.setEmail(student.getEmail());
+                i.setAge(student.getAge());
+                i.setCourse(student.getCourse());
+                return i;
+            }
+        }
+        return null;
+    }
 }

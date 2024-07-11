@@ -71,4 +71,28 @@ public class StudentController {
         }
         return null;
     }
+
+
+    @RequestMapping(method = RequestMethod.PATCH)
+    public Student patchStudent(@RequestBody Student student){
+
+        for(Student i : students){
+            if(i.getId() == student.getId()){
+                if(student.getName() != null){
+                    i.setName(student.getName());
+                }
+                if(student.getEmail() != null){
+                    i.setEmail(student.getEmail());
+                }
+                if(student.getAge() != 0){
+                    i.setAge(student.getAge());
+                }
+                if(student.getCourse() != null){
+                    i.setCourse(student.getCourse());
+                }
+                return i;
+            }
+        }
+        return null;
+    }
 }

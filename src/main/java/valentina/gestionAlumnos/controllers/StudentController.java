@@ -95,4 +95,15 @@ public class StudentController {
         }
         return null;
     }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public Student deleteStudent(@PathVariable int id){
+        for(Student i : students){
+            if(i.getId() == id){
+                students.remove(i);
+                return i;
+            }
+        }
+        return null;
+    }
 }
